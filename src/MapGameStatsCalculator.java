@@ -32,6 +32,7 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
       int score = scoreInput.nextInt();
 
       // TODO: add logic here to use the name and score to fill your map(s)!
+      gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
     }
   }
 
@@ -43,12 +44,11 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    * @throws NoSuchElementException if the person does not exist in the score data
    */
   @Override
-  public int gameCount(String person) {
-    // TODO: remove this exception once you have implemented your method!
-    throw new UnsupportedOperationException("Unimplemented method 'gameCount'");
-
+  public int gameCount(String person) {    
     // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    //checkPerson(person);
+    checkPerson(person); 
+    
+    return gameCounts.get(person); 
   }
 
   /**
