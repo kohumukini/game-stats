@@ -305,6 +305,8 @@ public class MapGameStatsCalculatorTest {
     assertEquals("Baya", actual);
   }
 
+  
+
   @Test
   public void highestAverageScorerThrowsNoSuchElementExceptionForEmptyScoreData() {
     // Arrange
