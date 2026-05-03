@@ -415,4 +415,40 @@ public class MapGameStatsCalculatorTest {
   }
 
   // Add more tests here!
+
+  @Test
+  public void sortedScoresWithOnePersonInput() {
+    // Arrange
+    String scoreData = "Nupur 10\n"
+        + "Nupur 30\n"
+        + "Nupur 25\n"
+        + "Nupur 40\n"; 
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    List<Integer> actual = calculator.sortedScores("Nupur"); 
+
+    // Assert
+    assertEquals(List.of(10, 25, 30, 40), actual);
+  }
+
+  @Test
+  public void sortedScoresNegativeScoreValues() {
+    // Arrange
+    String scoreData = "Nupur -10\n"
+        + "Baya -30\n"
+        + "Xinting -25\n"
+        + "Nupur -40\n"
+        + "Baya -50\n"
+        + "Nupur -20\n"
+        + "Baya -60\n"
+        + "Nupur -30\n";
+    GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+    // Act
+    List<Integer> actual = calculator.sortedScores("Baya"); 
+
+    // Assert
+    assertEquals(List.of(-60, -50, -30), actual); 
+  }
 }
